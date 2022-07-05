@@ -7,15 +7,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.pokemonapp2.R
 import com.example.pokemonapp2.databinding.PokemonItemBinding
-import com.example.pokemonapp2.models.Data
 import com.example.pokemonapp2.models.Pokemon
 
 class MainAdapter: RecyclerView.Adapter<MainAdapter.MainViewHolder>() {
 
     private var pokemons = mutableListOf<Pokemon>()
 
-    fun setList(pokemon: Pokemon) {
-        pokemons.add(pokemon)
+    fun setList(list: List<Pokemon>) {
+        pokemons.clear()
+        pokemons.addAll(list)
         notifyDataSetChanged()
     }
 
@@ -36,10 +36,10 @@ class MainAdapter: RecyclerView.Adapter<MainAdapter.MainViewHolder>() {
 
     override fun onBindViewHolder(holder: MainViewHolder, position: Int) {
         val pokemon = pokemons[position]
-        holder.binding.pokemonName.text = pokemon.data.name
-        holder.binding.pokemonRare.text = pokemon.data.rarity
+        holder.binding.pokemonName.text = pokemon.name
+        holder.binding.pokemonRare.text = pokemon.rarity
         Glide.with(holder.itemView.context)
-            .load(pokemon.data.images.large)
+            .load(pokemon.images.small)
             .centerCrop()
             .placeholder(R.drawable.ic_launcher_foreground)
             .into(holder.binding.pokemonAvatar)

@@ -4,14 +4,13 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.pokemonapp2.data.retrofit.RetrofitRepository
-import com.example.pokemonapp2.models.Pokemon
-import kotlinx.coroutines.coroutineScope
+import com.example.pokemonapp2.models.PokemonsResponse
 import kotlinx.coroutines.launch
 import retrofit2.Response
 
 class MainViewModel: ViewModel() {
     val repository = RetrofitRepository()
-    val pokemons: MutableLiveData<Response<Pokemon>> = MutableLiveData()
+    val pokemons: MutableLiveData<Response<PokemonsResponse>> = MutableLiveData()
 
     fun getAllPokemons() {
         viewModelScope.launch {

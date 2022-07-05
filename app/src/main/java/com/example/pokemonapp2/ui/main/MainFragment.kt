@@ -7,10 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
-import com.example.pokemonapp2.R
 import com.example.pokemonapp2.databinding.FragmentMainBinding
-import com.example.pokemonapp2.models.Data
-import com.example.pokemonapp2.models.Pokemon
 import com.example.pokemonapp2.utils.MainAdapter
 import com.example.pokemonapp2.viewmodels.MainViewModel
 
@@ -42,7 +39,7 @@ class MainFragment : Fragment() {
         recyclerView = binding.mainRv
         recyclerView.adapter = adapter
         viewModel.pokemons.observe(this, {
-             adapter.setList(it.body()!!)
+             adapter.setList(it.body()!!.data)
         })
 
     }
